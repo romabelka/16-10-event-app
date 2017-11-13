@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, Text, TextInput, Platform} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity, Platform} from 'react-native'
 
 class SignIn extends Component {
     static propTypes = {
@@ -34,10 +34,14 @@ class SignIn extends Component {
                         secureTextEntry
                     />
                 </View>
+                <TouchableOpacity onPress = {this.handleSubmit}>
+                    <Text>Submit</Text>
+                </TouchableOpacity>
             </View>
         )
     }
 
+    handleSubmit = console.log('---', this.state)
     changeEmail = email => this.setState({ email })
     changePassword = password => this.setState({ password })
 }
@@ -46,6 +50,7 @@ const styles = {
     container: {
         backgroundColor: '#F00',
         width: '100%',
+        height: '100%',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
