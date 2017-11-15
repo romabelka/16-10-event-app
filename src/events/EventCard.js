@@ -8,10 +8,10 @@ class EventCard extends Component {
     };
 
     render() {
-        const { event } = this.props
+        const { event: {title, when} } = this.props
         return (
             <Card>
-                <Text >{event.title}</Text>
+                <Text >{title} - {when}</Text>
             </Card>
         )
     }
