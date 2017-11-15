@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {View, Image, StyleSheet} from 'react-native'
 //import HelloWorld from './HelloWorld'
 //import Auth from './auth/SignIn'
-//import EventScreen from './events/EventScreen'
-import EventList from './events/EventList'
+import EventScreen from './events/EventScreen'
+// import EventList from './events/EventList'
 import {eventList} from './fixtures'
 
 export default class Root extends Component {
@@ -15,7 +15,8 @@ export default class Root extends Component {
                     style = {styles.logo}
                     resizeMode={Image.resizeMode.contain}
                 />
-                <EventList events = {eventList} />
+                {/*<EventList events = {eventList} />*/}
+                <EventScreen event={eventList[0]} />
             </View>
         )
     }
