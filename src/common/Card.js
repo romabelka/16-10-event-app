@@ -1,26 +1,33 @@
-import React, { Component } from 'react'
-import {View, StyleSheet} from 'react-native'
+import React, { Component } from 'react';
+import { Platform, View, StyleSheet } from 'react-native';
 
 class Card extends Component {
-    static propTypes = {
+  static propTypes = {};
 
-    };
-
-    render() {
-        return (
-            <View style = {styles.container}>
-                {this.props.children}
-            </View>
-        )
-    }
+  render() {
+    return <View style={styles.container}>{this.props.children}</View>;
+  }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        marginBottom: 15,
+  container: {
+    marginBottom: 15,
+    ...Platform.select({
+      android: {
         elevation: 5,
-        backgroundColor: '#FDFDFD'
-    }
-})
+      },
+      ios: {
+        shadowColor: '#000000',
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+        shadowRadius: 2,
+        shadowOpacity: 0.7,
+        backgroundColor: '#FDFDFD',
+      },
+    }),
+  },
+});
 
-export default Card
+export default Card;
