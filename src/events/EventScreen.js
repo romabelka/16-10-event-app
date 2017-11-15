@@ -1,10 +1,30 @@
 import React, { Component } from 'react'
-import {View, Text, Image, StyleSheet} from 'react-native'
+import {View, Text, Image, StyleSheet, Button} from 'react-native'
+import Confirm from '../common/Confirm'
 
 class EventScreen extends Component {
     static propTypes = {
 
     };
+
+    state = {
+        deleteProcess: false
+    }
+
+    curryDeleteEvent(uid) {
+        return () => {
+            console.log('--- delete event', uid)
+            this.hideConfirmation()
+        }
+    }
+
+    showConfirmation() {
+        this.setState({deleteProcess: true})
+    }
+
+    hideConfirmation() {
+        this.setState({deleteProcess: false})
+    }
 
     render() {
         const {event} = this.props
@@ -16,7 +36,30 @@ class EventScreen extends Component {
                 <Text>{event.title}</Text>
                 <Text>{event.where}</Text>
                 <Text>{event.url}</Text>
+                {this.renderDeleteButton()}
+                {this.renderConfirmation(event.uid)}
             </View>
+        )
+    }
+
+    renderDeleteButton() {
+        const { event } = this.props
+
+        return <Button
+            accessibilityLabel={`Press to delete event "${event.title}"`}
+            title="Delete"
+            onPress={this.showConfirmation.bind(this)}
+            color='red'
+        />
+    }
+
+    renderConfirmation(uid) {
+        return (
+            <Confirm visible={this.state.deleteProcess}>
+                <Text>Do you want to delete the event?</Text>
+                <Button title="Yes" color="red" onPress={this.curryDeleteEvent(uid)} />
+                <Button title="Cancel" onPress={this.hideConfirmation.bind(this)} />
+            </Confirm>
         )
     }
 }
