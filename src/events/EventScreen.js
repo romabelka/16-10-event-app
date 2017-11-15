@@ -1,10 +1,27 @@
 import React, { Component } from 'react'
-import {View, Text, Image, StyleSheet} from 'react-native'
+import {Button, View, Text, Image, StyleSheet} from 'react-native'
+import Confirm from './Confirm'
 
 class EventScreen extends Component {
     static propTypes = {
 
     };
+
+    state = {
+        modalVisible: false,
+    }
+
+    handleDelete = () => {
+        this.setState({modalVisible: true})
+    }
+
+    handleConfirm = () => {
+        this.setState({modalVisible: false})
+    }
+
+    handleCancel = () => {
+        this.setState({modalVisible: false})
+    }
 
     render() {
         const {event} = this.props
@@ -16,6 +33,16 @@ class EventScreen extends Component {
                 <Text>{event.title}</Text>
                 <Text>{event.where}</Text>
                 <Text>{event.url}</Text>
+                <Button
+                    title="Delete"
+                    onPress={this.handleDelete}
+                />
+
+                <Confirm
+                    visible={this.state.modalVisible}
+                    handleConfirm={this.handleConfirm}
+                    handleCancel={this.handleCancel}
+                />
             </View>
         )
     }
