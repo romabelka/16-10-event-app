@@ -2256,7 +2256,7 @@ export const data = {
 }
 
 function toArr(obj) {
-    return Object.entries(obj).map(([uid, value]) => ({uid, ...value}))
+    return Object.entries(obj).map(([uid, value]) => ({uid, key: uid, ...value}))
 }
 
 export const eventList = toArr(data.events)
