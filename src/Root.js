@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
-import {View, Image, StyleSheet} from 'react-native'
+import {View, Image, StyleSheet, TouchableHighlight, Text, Modal} from 'react-native'
 //import HelloWorld from './HelloWorld'
 //import Auth from './auth/SignIn'
 //import EventScreen from './events/EventScreen'
 import EventList from './events/EventList'
+import EventRemoveModal from './events/EventRemoveModall';
 import {eventList} from './fixtures'
 
 export default class Root extends Component {
@@ -15,6 +16,7 @@ export default class Root extends Component {
                     style = {styles.logo}
                     resizeMode={Image.resizeMode.contain}
                 />
+                <EventRemoveModal />
                 <EventList events = {eventList} />
             </View>
         )
