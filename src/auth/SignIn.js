@@ -41,7 +41,7 @@ class SignIn extends Component {
         )
     }
 
-    handleSubmit = console.log('---', this.state)
+    handleSubmit = () => this.props.onSubmit()
     changeEmail = email => this.setState({ email })
     changePassword = password => this.setState({ password })
 }
