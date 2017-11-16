@@ -1,13 +1,16 @@
 import {observable, action, autorun} from 'mobx'
 import firebase from 'firebase'
+import BaseStore from './BaseStore'
 
-class AuthStore {
+class AuthStore extends BaseStore {
     @observable user = null
 
-    constructor() {
+    constructor(...args) {
+        super(...args)
 
         autorun(() => {
             const routeName = this.user ? 'eventList' : 'auth'
+            this.getStore('navigation').navigate(routeName)
             console.log('---', routeName)
             //navigate to routeName
         })
@@ -28,4 +31,4 @@ class AuthStore {
     @action setUser = user => this.user = user
 }
 
-export default new AuthStore()
+export default AuthStore

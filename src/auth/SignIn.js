@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import {View, Text, TextInput, TouchableOpacity, Platform} from 'react-native'
 import {observable, action, useStrict} from 'mobx'
-import {observer} from 'mobx-react'
-import authStore from '../stores/auth'
+import {observer, inject} from 'mobx-react'
 
-@observer
+@inject('auth') @observer
 class SignIn extends Component {
     static propTypes = {
 
@@ -42,7 +41,7 @@ class SignIn extends Component {
         )
     }
 
-    handleSubmit = () => authStore.signIn(this.email, this.password)
+    handleSubmit = () => this.props.auth.signIn(this.email, this.password)
     @action changeEmail = email => this.email = email
     @action changePassword = password => this.password = password
 }
