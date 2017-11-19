@@ -28,7 +28,11 @@ class AuthStore extends BaseStore {
             .then(this.setUser)
     }
 
-    @action setUser = user => this.user = user
+    @action setUser = user => {
+        this.cleanUser()
+        this.user = user
+    }
+    @action cleanUser = () => this.user = null
 }
 
 export default AuthStore
