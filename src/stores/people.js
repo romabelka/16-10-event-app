@@ -2,12 +2,12 @@ import {observable, action} from 'mobx'
 import firebase from 'firebase'
 import BaseStore from './BaseStore'
 
-class EventsStore extends BaseStore {
+class PeopleStore extends BaseStore {
     @observable entities = {}
 
     @action
     getAll() {
-        firebase.database().ref('events')
+        firebase.database().ref('people')
             .once('value').then(snapshot => {
                 this.entities = snapshot.val()
             }
@@ -16,4 +16,4 @@ class EventsStore extends BaseStore {
 
 }
 
-export default EventsStore
+export default PeopleStore
