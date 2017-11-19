@@ -1,6 +1,7 @@
 import {StackNavigator, TabNavigator} from 'react-navigation'
 import AuthScreen from './screens/Auth'
 import EventListScreen from './screens/EventList'
+import PeopleListScreen from './screens/PeopleList';
 
 const AppNavigator = new StackNavigator({
     auth: {
@@ -15,7 +16,7 @@ const AppNavigator = new StackNavigator({
                 })
             },
             people: {
-                screen: EventListScreen,
+                screen: PeopleListScreen,
                 navigationOptions: ({ navigation }) => ({
                     title: 'People',
                 })
