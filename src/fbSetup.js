@@ -1,12 +1,12 @@
 import firebase from 'firebase'
 
 const config = {
-    apiKey: "AIzaSyB31xpTtp4Jln_hb2kAbE4PGf6Mi8EgLyA",
-    authDomain: "advreact-1610.firebaseapp.com",
-    databaseURL: "https://advreact-1610.firebaseio.com",
-    projectId: "advreact-1610",
-    storageBucket: "advreact-1610.appspot.com",
-    messagingSenderId: "397157634637"
-};
+    apiKey: "AIzaSyAt-smU_1tqNdkj9pmSpVLxqaOjhDwf4dk",
+    authDomain: "react-course-f262b.firebaseapp.com",
+    databaseURL: "https://react-course-f262b.firebaseio.com",
+    projectId: "react-course-f262b",
+    storageBucket: "react-course-f262b.appspot.com",
+    messagingSenderId: "447165438476"
+  };
 
 firebase.initializeApp(config);
