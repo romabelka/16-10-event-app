@@ -11,7 +11,6 @@ class AuthStore extends BaseStore {
         autorun(() => {
             const routeName = this.user ? 'eventList' : 'auth'
             this.getStore('navigation').navigate(routeName)
-            console.log('---', routeName)
             //navigate to routeName
         })
 /*
