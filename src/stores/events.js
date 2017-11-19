@@ -1,6 +1,7 @@
 import {observable, action, autorun} from 'mobx'
 import firebase from 'firebase'
 import BaseStore from './BaseStore'
+import {fbToEntities} from "../utils";
 
 class EventsStore extends BaseStore {
     @observable list = [];
@@ -12,8 +13,7 @@ class EventsStore extends BaseStore {
     getAll() {
         const ref = firebase.database().ref('events');
         ref.on('value', data => {
-            console.log(data.val());
-            this.setList(data.val());
+            this.setList( fbToEntities(data.val()) );
         });
     }
 
