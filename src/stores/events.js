@@ -9,7 +9,12 @@ class EventsStore extends BaseStore {
     getAll() {
         firebase.database().ref('events')
             .once('value').then(snapshot => {
-                this.entities = snapshot.val()
+                const events = snapshot.val()
+
+                this.entities = Object.keys(events).map(key => ({
+                    uid: key,
+                    ...events[key],
+                }))
             }
         )
     }

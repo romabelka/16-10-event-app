@@ -9,7 +9,12 @@ class PeopleStore extends BaseStore {
     getAll() {
         firebase.database().ref('people')
             .once('value').then(snapshot => {
-                this.entities = snapshot.val()
+                const people = snapshot.val()
+
+                this.entities = Object.keys(people).map(key => ({
+                    uid: key,
+                    ...people[key],
+                }))
             }
         )
     }
