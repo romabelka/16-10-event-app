@@ -1,12 +1,12 @@
 import firebase from 'firebase'
 
-const config = {
-    apiKey: "AIzaSyB31xpTtp4Jln_hb2kAbE4PGf6Mi8EgLyA",
-    authDomain: "advreact-1610.firebaseapp.com",
-    databaseURL: "https://advreact-1610.firebaseio.com",
-    projectId: "advreact-1610",
-    storageBucket: "advreact-1610.appspot.com",
-    messagingSenderId: "397157634637"
-};
+var config = {
+    apiKey: "AIzaSyB3LVTO7RSDrZAkHBkpzg9T5KkuoCoy4qo",
+    authDomain: "advreact-1610-ec352.firebaseapp.com",
+    databaseURL: "https://advreact-1610-ec352.firebaseio.com",
+    projectId: "advreact-1610-ec352",
+    storageBucket: "advreact-1610-ec352.appspot.com",
+    messagingSenderId: "651090769196"
+  };
 
 firebase.initializeApp(config);
