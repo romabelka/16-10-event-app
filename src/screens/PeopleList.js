@@ -1,27 +1,26 @@
 import React, { Component } from 'react'
 import {View, StyleSheet} from 'react-native'
-import EventList from '../events/EventList'
-import {eventList} from '../fixtures'
+import PeopleList from '../people/PeopleList'
 import {observer, inject} from 'mobx-react'
 
-@inject('events')
+@inject('people')
 @observer
-class EventListScreen extends Component {
+class PeopleListScreen extends Component {
     static propTypes = {
 
     };
 
     static navigationOptions = {
-        title: 'event list'
+        title: 'people list'
     }
 
     componentDidMount() {
-        this.props.events.getAll()
+        this.props.people.getAll()
     }
 
     render() {
         return (
-            <EventList events = {this.props.events.entities}/>
+            <PeopleList people = {this.props.people.entities}/>
         )
     }
 }
@@ -29,4 +28,4 @@ class EventListScreen extends Component {
 const styles = StyleSheet.create({
 })
 
-export default EventListScreen
+export default PeopleListScreen
