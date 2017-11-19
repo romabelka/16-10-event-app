@@ -1,5 +1,5 @@
 import BaseStore from './BaseStore'
-import {observable, action, computed} from 'mobx'
+import {observable, action, computed, toJS} from 'mobx'
 import AppNavigator from '../AppNavigator'
 import {NavigationActions} from 'react-navigation'
 
@@ -12,7 +12,7 @@ export default class NavigationStore extends BaseStore {
 
     @computed get config() {
         return {
-            state: this.state,
+            state: toJS(this.state),
             dispatch: this.dispatch
         }
     }

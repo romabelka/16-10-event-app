@@ -9,7 +9,7 @@ class AuthStore extends BaseStore {
         super(...args)
 
         autorun(() => {
-            const routeName = this.user ? 'eventList' : 'auth'
+            const routeName = this.user ? 'lists' : 'auth'
             this.getStore('navigation').navigate(routeName)
             console.log('---', routeName)
             //navigate to routeName

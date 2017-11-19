@@ -10,13 +10,9 @@ useStrict()
 @observer
 export default class App extends React.Component {
     render() {
-        console.log('---', 1111)
         return (
             <Provider {...stores}>
-                <AppNavigator navigation = {addNavigationHelpers({
-                    dispatch: stores.navigation.dispatch,
-                    state: stores.navigation.state
-                })}/>
+                <AppNavigator navigation = {addNavigationHelpers(stores.navigation.config)}/>
             </Provider>
         )
     }
