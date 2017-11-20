@@ -29,7 +29,7 @@ class EventListScreen extends Component {
     }
 
     handleEventPress = (uid) => {
-        this.props.navigation.navigate('event', { uid })
+        this.props.navigation.navigate('eventMap', { uid })
     }
 }
 
