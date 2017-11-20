@@ -10,16 +10,13 @@ class AuthStore extends BaseStore {
 
         autorun(() => {
             const routeName = this.user ? 'lists' : 'auth'
-            this.getStore('navigation').navigate(routeName)
-            console.log('---', routeName)
-            //navigate to routeName
+            this.getStore('navigation').reset(routeName)
         })
-        firebase.auth().onAuthStateChanged(user => this.user = user)
+        firebase.auth().onAuthStateChanged(this.setUser)
     }
 
     signIn(email, password) {
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(this.setUser)
     }
 
     @action setUser = user => this.user = user

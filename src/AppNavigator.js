@@ -1,6 +1,7 @@
 import {StackNavigator, TabNavigator} from 'react-navigation'
 import Auth from './screens/Auth'
 import EventList from './screens/events/EventList'
+import Event from './screens/events/Event'
 import PeopleList from './screens/people/PeopleList'
 
 const ListsNavigator = TabNavigator({
@@ -19,6 +20,9 @@ const AppNavigator = StackNavigator({
     auth: {
         screen: Auth
     },
+    event: {
+        screen: Event
+    }
 })
 
 export default AppNavigator

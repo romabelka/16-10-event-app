@@ -17,7 +17,18 @@ export default class NavigationStore extends BaseStore {
         }
     }
 
-    navigate(routeName) {
-        this.dispatch(NavigationActions.navigate({routeName}))
+    navigate(routeName, params) {
+        this.dispatch(NavigationActions.navigate({routeName, params}))
+    }
+
+    reset(routeName, params) {
+        const action = NavigationActions.reset({
+            index: 0,
+            actions: [
+                NavigationActions.navigate({ routeName, params })
+            ]
+        })
+
+        this.dispatch(action)
     }
 }
