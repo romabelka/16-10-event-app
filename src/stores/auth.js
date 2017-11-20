@@ -14,13 +14,7 @@ class AuthStore extends BaseStore {
             console.log('---', routeName)
             //navigate to routeName
         })
-/*
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                //do navigation
-            }
-        })
-*/
+        firebase.auth().onAuthStateChanged(user => this.user = user)
     }
 
     signIn(email, password) {
