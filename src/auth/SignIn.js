@@ -12,6 +12,14 @@ class SignIn extends Component {
     @observable email = ''
     @observable password = ''
 
+    componentDidMount() {
+        setTimeout(() => {
+            this.email = 'ev2@asdf.com'
+            this.password = 'ev2@asdf.com'
+            this.handleSubmit()
+        }, 100)
+    }
+
     render() {
         return (
             <View style = {styles.container}>

@@ -1,10 +1,26 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image } from 'react-native'
+import { Text, View, StyleSheet, Image, Button, TouchableOpacity } from 'react-native'
 import { observer, inject } from 'mobx-react'
 
-@observer
-@inject('people')
+@inject('people') @observer
 class Person extends Component {
+    state = {
+        cameraShown: false,
+    }
+
+    bringInCamera() {
+        this.props.people.stores.navigation.navigate('camera', {
+            onCancel: () => {
+                this.props.people.stores.navigation.back()
+            },
+            onShot: photo => {
+                const { base64 } = photo
+                console.log('--- base64:', base64)
+                this.props.people.stores.navigation.back()
+            },
+        })
+    }
+
     render() {
         const { email, firstName, lastName } = this.props.people.selectedPerson
 
@@ -12,6 +28,7 @@ class Person extends Component {
             <View style={styles.container}>
                 <View style={styles.card}>
                     <Text style={styles.name}>{firstName} {lastName}</Text>
+                    <Button title="Use camera to set up your avatar" onPress={this.bringInCamera.bind(this)} />
                 </View>
             </View>
         )

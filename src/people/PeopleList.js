@@ -3,8 +3,7 @@ import {inject, observer, Observer} from 'mobx-react'
 import {TouchableOpacity, Text, SectionList, ActivityIndicator, StyleSheet} from 'react-native'
 import PersonCard from './PersonCard'
 
-@inject('people')
-@observer
+@inject('people') @observer
 class PeopleList extends Component {
     /*static defaultProps = {
         onPersonPress: () => {}

@@ -4,8 +4,7 @@ import {View, StyleSheet, ActivityIndicator} from 'react-native'
 import PeopleList from '../../people/PeopleList'
 // import {text, email} from 'react-native-communications'
 
-@inject('people')
-@observer
+@inject('people') @observer
 class PeopleListScreen extends Component {
     static propTypes = {
 
