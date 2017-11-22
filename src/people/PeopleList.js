@@ -6,9 +6,16 @@ import PersonCard from './PersonCard'
 @inject('people')
 @observer
 class PeopleList extends Component {
-    static defaultProps = {
+    /*static defaultProps = {
         onPersonPress: () => {}
-    };
+    };*/
+
+    currySelectPerson(person) {
+        return () => {
+            this.props.people.selectPerson(person)
+            this.props.people.stores.navigation.navigate('person', {})
+        }
+    }
 
     componentDidMount() {
         const {people} = this.props
@@ -16,13 +23,13 @@ class PeopleList extends Component {
     }
 
     render() {
-        const {onPersonPress, people} = this.props
+        const {people} = this.props
         if (people.loading) return <ActivityIndicator size='large'/>
 
         return <SectionList
             sections = {people.sections}
             renderSectionHeader = {({section}) => <Text style={styles.header}>{section.title}</Text>}
-            renderItem = {({item}) => <TouchableOpacity onPress = {onPersonPress.bind(null, item.key)}>
+            renderItem = {({item}) => <TouchableOpacity onPress = {this.currySelectPerson(item.person)}>
                 <Observer>{() => <PersonCard person = {item.person} />}</Observer>
             </TouchableOpacity>}
         />
