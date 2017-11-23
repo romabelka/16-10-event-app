@@ -23,16 +23,15 @@ class PeopleListScreen extends Component {
     render() {
         const {people} = this.props
         if (people.loading) return this.getLoader()
-        return <PeopleList onPersonPress = {this.hadlePress}/>
-    }
-
-    hadlePress =() => {
-//        text('+123456789')
-        email(['test@example.com'], null, null, null, null)
+        return <PeopleList onPersonPress = {this.handlePress} onLongPress = {this.handleLongPress}/>
     }
 
     getLoader() {
         return <View><ActivityIndicator size='large'/></View>
+    }
+
+    handleLongPress = uid => {
+        this.props.navigation.navigate('personPhoto', { uid })
     }
 }
 
