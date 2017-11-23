@@ -36,7 +36,7 @@ class Camera extends Component {
     async handleShot() {
         if (this.camera) {
             let photo = await this.camera.takePictureAsync({
-                quality: 0.7,
+                quality: 0.5,
                 base64: true,
                 exif: false,
             });
@@ -73,7 +73,10 @@ class Camera extends Component {
     renderNoAccess() {
         return (
             <View style={styles.noAccess}>
-                <Text>Permission not granted</Text>
+                <View>
+                    <Text style={styles.alertText}>Camera permission not granted</Text>
+                    <Button title="Get back" onPress={this.onCancel} />
+                </View>
             </View>
         )
     }
@@ -139,5 +142,8 @@ const styles = {
     shotButtonText: {
         fontSize: 80,
         color: 'red',
-    }
+    },
+    alertText: {
+        fontSize: 20,
+    },
 }

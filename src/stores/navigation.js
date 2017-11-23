@@ -33,8 +33,6 @@ export default class NavigationStore extends BaseStore {
     }
 
     back() {
-        const backAction = NavigationActions.back()
-
-        this.dispatch(backAction)
+        this.dispatch( NavigationActions.back() )
     }
 }

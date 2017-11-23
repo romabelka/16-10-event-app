@@ -4,8 +4,8 @@ import { observer, inject } from 'mobx-react'
 
 @inject('people') @observer
 class Person extends Component {
-    state = {
-        cameraShown: false,
+    get snapshot() {
+        return this.props.people.snapshot
     }
 
     bringInCamera() {
@@ -13,10 +13,9 @@ class Person extends Component {
             onCancel: () => {
                 this.props.people.stores.navigation.back()
             },
-            onShot: photo => {
-                const { base64 } = photo
-                console.log('--- base64:', base64)
+            onShot: snapshot => {
                 this.props.people.stores.navigation.back()
+                this.props.people.setSnapshot(snapshot)
             },
         })
     }
@@ -27,11 +26,39 @@ class Person extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.card}>
+                    {this.renderAvatar()}
                     <Text style={styles.name}>{firstName} {lastName}</Text>
-                    <Button title="Use camera to set up your avatar" onPress={this.bringInCamera.bind(this)} />
+                    {this.renderSetAvatarButton()}
                 </View>
             </View>
         )
+    }
+
+    renderAvatar() {
+        if (!this.snapshot) {
+            return null
+        }
+
+        const { uri, width, height } = this.snapshot
+        const ratio = width / height
+
+        const props = {
+            source: {uri},
+            style: {
+                width: 300,
+                height: 300 / ratio,
+            },
+        }
+
+        return <Image {...props} />
+    }
+
+    renderSetAvatarButton() {
+        if (this.snapshot) {
+            return null
+        }
+
+        return <Button title="Use camera to set up your avatar" onPress={this.bringInCamera.bind(this)} />
     }
 }
 
