@@ -31,4 +31,8 @@ export default class NavigationStore extends BaseStore {
 
         this.dispatch(action)
     }
+
+    back() {
+        this.dispatch( NavigationActions.back() )
+    }
 }

@@ -12,20 +12,33 @@ class SignIn extends Component {
     @observable email = ''
     @observable password = ''
 
+    componentDidMount() {
+        setTimeout(() => {
+            this.email = 'ev2@asdf.com'
+            this.password = 'ev2@asdf.com'
+            this.handleSubmit()
+        }, 100)
+    }
+
     render() {
         return (
             <View style = {styles.container}>
-                <Text>Please Sign In</Text>
-                <View>
+                <View style={styles.headerCtnr}>
+                    <Text style={styles.headerText}>
+                        Please Sign In
+                    </Text>
+                </View>
+                <View style={styles.fieldCtnr}>
                     <Text>Email:</Text>
                     <TextInput
                         style = {styles.input}
                         value = {this.email}
+                        autoCapitalize = 'none'
                         onChangeText = {this.changeEmail}
                         keyboardType = 'email-address'
                     />
                 </View>
-                <View>
+                <View style={styles.fieldCtnr}>
                     <Text>Password:</Text>
                     <TextInput
                         style = {styles.input}
@@ -47,15 +60,25 @@ class SignIn extends Component {
 }
 
 const styles = {
+    headerCtnr: {
+        marginBottom: 20,
+    },
+    headerText: {
+        fontWeight: 'bold',
+    },
     container: {
-        backgroundColor: '#F00',
         width: '100%',
         height: '100%',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
     },
+    fieldCtnr: {
+        marginBottom: 20,
+        width: '80%',
+    },
     input: {
+        marginTop: 10,
         ...Platform.select({
             ios: {
                 borderBottomColor: '#000',
@@ -65,7 +88,7 @@ const styles = {
 
             }
         })
-    }
+    },
 }
 
 export default SignIn

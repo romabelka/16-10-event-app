@@ -3,8 +3,7 @@ import {View, StyleSheet} from 'react-native'
 import Event from '../../events/Event'
 import {observer, inject} from 'mobx-react'
 
-@inject('events')
-@observer
+@inject('events') @observer
 class EventScreen extends Component {
     static propTypes = {
 

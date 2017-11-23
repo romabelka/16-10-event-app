@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import {observer, inject} from 'mobx-react'
 import {View, StyleSheet, ActivityIndicator} from 'react-native'
 import PeopleList from '../../people/PeopleList'
-import {text, email} from 'react-native-communications'
+// import {text, email} from 'react-native-communications'
 
-@inject('people')
-@observer
+@inject('people') @observer
 class PeopleListScreen extends Component {
     static propTypes = {
 
@@ -23,13 +22,13 @@ class PeopleListScreen extends Component {
     render() {
         const {people} = this.props
         if (people.loading) return this.getLoader()
-        return <PeopleList onPersonPress = {this.hadlePress}/>
+        return <PeopleList />
     }
 
-    hadlePress =() => {
+    /*hadlePress =() => {
 //        text('+123456789')
         email(['test@example.com'], null, null, null, null)
-    }
+    }*/
 
     getLoader() {
         return <View><ActivityIndicator size='large'/></View>
